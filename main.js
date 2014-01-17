@@ -7,6 +7,8 @@ var config = {
 };
 
 
+var helper = require("./helper.js");
+var myhelper = new helper();
 
 var freader = require("./filereader.js");
 var fwriter = require("./filewriter.js");
@@ -22,7 +24,10 @@ for(var i=0; i < dirArr.length; i++){
 
 	if(dname.indexOf(config.separator) != -1){
 		var nameSplit = dname.split(config.separator);
-		dataArr.push(nameSplit);
+		nameSplit[1] = myhelper.convert2date(nameSplit[1]);
+		
+		
+		dataArr.push(myhelper.reorderArr(nameSplit));
 	}
 }
 
