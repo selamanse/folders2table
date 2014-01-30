@@ -1,4 +1,5 @@
 // filereader module
+var plib = require('path');
 
 module.exports = function(path) {
   return {
@@ -7,7 +8,7 @@ module.exports = function(path) {
         
         
         if(typeof path == "undefined"){
-        	path = "./";
+        	path = ".";
         }
 
          
@@ -17,7 +18,7 @@ module.exports = function(path) {
 		for(var i=0; i < files.length; i++){
 	
 			var fname = files[i];
-			var fstat = fs.statSync(path + fname);
+			var fstat = fs.statSync(path + plib.sep + fname);
 
 			if(fstat.isDirectory() === true){
 				console.log(fname);
